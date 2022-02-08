@@ -33,8 +33,7 @@ class SistemaChatBot:
         ##faz a entrada de dados do usuário e atribui o objeto ao atributo __bot 
 
     def mostra_comandos_bot(self):
-        for comando,  in self.__bot.comandos:
-            print(f'{comando.id} - {comando.mensagem}')
+        print(self.__bot.mostra_comandos())
         ##mostra os comandos disponíveis no bot escolhido
 
     def le_envia_comando(self):
