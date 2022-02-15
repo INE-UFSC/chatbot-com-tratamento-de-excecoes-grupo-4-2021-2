@@ -1,13 +1,15 @@
 from Bots.Bot import Bot
 from Bots.comando import Comando
 
-comandos = Comando(1, "conte uma pidada", ["hehe piada1", "hehe piada2", "PIADA3"])
 
-
-class BotZangado(Bot):
-    def __init__(self,nome):
+class BotGenerico(Bot):
+    def __init__(self, nome, comandos, despedida, apresentacao, boas_vindas):
+        self.__despedida = despedida
+        self.__apresentacao = apresentacao
+        self.__boas_vindas = boas_vindas
+        self.__apresentacao = apresentacao
         self.__nome = nome
-        self.__comandos = [comandos]
+        self.__comandos = comandos
  
     @property
     def nome(self):
@@ -20,9 +22,9 @@ class BotZangado(Bot):
     @nome.setter
     def nome(self, nome):
         self.__nome = nome
-
+    @property
     def apresentacao(self):
-        return "sou o zangado"
+        return self.__apresentacao
  
     def mostra_comandos(self):
         mensa = ""
@@ -37,9 +39,11 @@ class BotZangado(Bot):
                 return resposta
         return 'Comando não encontrado'
         
-
+    def adiciona_comando(self, comando):
+        self.__comandos.append(comando)
+    @property
     def boas_vindas(self):
-        return 'AHHH nao seja bem vindo, o que voce quer?'
-
+        return self.__boas_vindas
+    @property
     def despedida(self):
-        return 'vai tarde'
+        return self.__despedida

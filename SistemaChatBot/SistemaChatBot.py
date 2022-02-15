@@ -4,7 +4,7 @@ class SistemaChatBot:
     def __init__(self,nomeEmpresa,lista_bots):
         self.__empresa=nomeEmpresa
         ##verificar se a lista de bots contém apenas bots
-        self.__lista_bots=lista_bots
+        self.__lista_bots = lista_bots
         self.__bot = None
     
     def boas_vindas(self):
@@ -14,7 +14,7 @@ class SistemaChatBot:
     def mostra_menu(self):
         print('Os chatbots disponíveis são:')
         for x, i in enumerate(self.__lista_bots):
-            print(f'{x + 1}) {i.nome}: {i.apresentacao()}')
+            print(f'{x + 1}) {i.nome}: {i.apresentacao}')
         ##mostra o menu de escolha de bots
     
     def escolhe_bot(self):
@@ -54,7 +54,7 @@ class SistemaChatBot:
         ##escolha do bot     
         self.escolhe_bot() 
         ##mostra mensagens de boas-vindas do bot escolhido
-        print(self.__bot.boas_vindas())
+        print(self.__bot.boas_vindas)
         ##entra no loop de mostrar comandos do bot e escolher comando do bot até o usuário definir a saída
         while True:
             self.mostra_comandos_bot()
@@ -62,4 +62,4 @@ class SistemaChatBot:
             if saida == 'parar':
                 break
         ##ao sair mostrar a mensagem de despedida do bot
-        print(self.__bot.despedida())
+        print(self.__bot.despedida)
