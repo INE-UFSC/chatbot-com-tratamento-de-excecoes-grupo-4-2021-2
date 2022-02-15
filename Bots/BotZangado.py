@@ -1,28 +1,45 @@
 from Bots.Bot import Bot
+from Bots.comando import Comando
+
+comandos = Comando(1, "conte uma pidada", ["hehe piada1", "hehe piada2", "PIADA3"])
+
 
 class BotZangado(Bot):
     def __init__(self,nome):
         self.__nome = nome
-
-    #nao esquecer o decorator
+        self.__comandos = [comandos]
+ 
+    @property
     def nome(self):
-        pass
+        return self.__nome  
+    
+    @property
+    def comandos(self):
+        return self.__comandos
 
-    #nao esquecer o decorator
-    def nome(nome):
-        pass
+    @nome.setter
+    def nome(self, nome):
+        self.__nome = nome
 
     def apresentacao(self):
-        pass
+        return "sou o zangado"
  
     def mostra_comandos(self):
-        pass
+        mensa = ""
+        for i in self.__comandos:
+            mensa +=  f"{i.id} --- {i.mensagem}/n"
+        return mensa
     
     def executa_comando(self,cmd):
-        pass
+        for i in self.__comandos:
+            if i.id == cmd:
+                resposta = i.get_resposta_random()
+                return resposta
+        return 'Comando não encontrado'
+        
 
     def boas_vindas(self):
-        pass
+        return 'AHHH nao seja bem vindo, o que voce quer?'
 
     def despedida(self):
-        pass
+        return 'vai tarde'
